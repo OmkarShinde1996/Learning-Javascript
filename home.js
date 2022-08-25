@@ -143,4 +143,19 @@ switch (day) {
 }
 console.log(text);
 
-
+////Json files are used to represent the data. It is stand for javascript object notation.
+////Generally it is used for APIs and configurations to carry out the infomation that is very very lightweight.
+let students = `[
+    {
+        "name" : "Omkar",
+        "height" : 164,
+        "Identification mark" : "Mole"
+    },
+    {
+        "name" : "Aniket",
+        "height" : 167,
+        "Identification mark" : "Mole"
+    }
+]`
+console.log(JSON.parse(students)); //Prints json as a list of objects in console
+console.log(students); //Prints like json file in console

@@ -22,3 +22,8 @@ function generateCat(){
     img.setAttribute('src',imageUrl);
     document.getElementById('catGeenrator').appendChild(img);
 }
+
+function removeCat(){
+    document.getElementById('catGeenrator').remove();
+    location.reload();
+}

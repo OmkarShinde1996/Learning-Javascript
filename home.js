@@ -30,7 +30,9 @@ x == '5';//true
 x === 5;//true
 x === '5';//false - because data type mismatch
 
-
+////String interpolation
+let bob = 'omkar';
+let string1 = `hi ${bob}, Nice to meet you`;
 
 
 

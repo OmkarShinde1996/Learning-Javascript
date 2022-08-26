@@ -1,0 +1,98 @@
+Variables : Variables are placeholders to store infomation or data. Variables can hold different data types like numebrs, strings, booleans and more.
+
+Operators : Operators are used to assign values, compare values, perform arithmatic operations
+
+prompt() : prompt() is the built-in JS function that helps you get input from user through the browser
+
+alert() : alert() is like prompt(), but it only for output
+
+Object : Object in JS are a type of variable, quite similar to arrays but they have something called key-value pairs. You can also store functions in Object list.
+ex. -
+const person = {
+    'name':'Omkar',
+    'age','26',
+}
+
+Accessing an object from object list : There are 2 ways to access an object (dot notation & bracket notation)
+person.name; ----> dot notation
+person['age']; ----> bracket notation
+
+assigning an object :
+person.phone = '123456789';
+person['phone'] = '123456789';
+
+Math.floor() : this function is used to round of the decimal number (3.24 => 3)
+
+Math.ceil() : this function is used to round of the decimal number (3.24 => 4)
+
+Math.random() : this function is used get random decimal number from 0-1 (0.624367372)
+
+Math.random()*4 : We can multiply Math.random() function with any number whithin which you want to get random number(in this case you will get number within 0-4. 4 exclusive)
+
+let : let is used to define the variable (ex. - let name = 'omkar')
+
+const : const is used to define never changing value (ex. - const NAME = 'omakr')
+
+function : function is the keyword used to define the function/method (syntax - function greeting(){}). A JS function is the block of code designed to perform a perticular task and is executed when something calls it.
+
+function arguments : function arguments are the values received by the function when it is called, they behave as a variables however they only live within a function and cannot be accessed outside. (syntax - function sayMyName(name){})
+
+Template literals `${variable name}` : Template literals provide an easy way to interpolet variables and expressions into strings. Interpolation is an easy/efficient way of concatination.
+
+return : the return keyword/statement stopes the execution of a function and return a value.
+
+Arrow functions : Arraow functions allows us to write shorter function syntax.
+ex. - 
+Regular function -
+function myFunction(name){
+    console.log(`hi S{name}`);
+}
+Arrow function with explicit return-
+const myFunction = (name) => {
+    console.log(`hi S{name}`);
+}
+Arrow function with implicit return -
+const sumArrow = (a,b) => a+b;
+It basically tells us that we have a function called "sumArrow" which takes 2 arguments and return sum of them
+
+Array syntax => let array = ['Banana','Orange','Apple','Pear']; or let array = [];
+
+Adding element in array => array.push('pineapple'); - adds the element in the end
+
+removing the element from array => array.remove(); - removes element at the end in array
+
+removing the element at 1st position in array => array.
+
+Getting lenght of array => array.length; 
+
+slice(); : The slice method return the position of the array you want in a new array (array.slice(0,2);)
+
+indexOf('element'); : This method will give you the index of perticular element in array
+
+this keyword : this keyword is used to refrence the object or variable in the current block
+ex. -
+const introducer = (assets, liabilities) => {
+    let person = {
+        assets : assets,
+        liabilities : liabilities,
+        netWorth : function(){
+            return this.assets-this.liabilities;
+        }
+    }
+    const intro = `Hi, My net worth is $${person.netWorth()}`;
+    return intro;
+}
+console.log(introducer(100000, 500));
+
+for loop new syntax : in below for loop ({let variableName} of {arrayName})
+let fruits = ['banana','mango','apple','pineapple'];
+for(let i of fruits){
+    console.log(i);
+}
+
+
+
+
+
+
+

@@ -1,3 +1,39 @@
+////Basic datatypes in JS
+let Number = 10;//number can be anything int, float, double
+let string = 'string';//String can be wrapped in '' or ""
+let array = ['10','string','10.10'];
+let object = {'name':'omkar','lastName':'shinde','age':'26'};
+let boolean = false;//false or true
+
+////Math oprations
+let Multiply = 2*3;
+let devide = 2/3;
+let exponent = 2**3; //2^3 in java
+let modulo = 2%3; //return reminder
+let add = 2+3;
+let subtract = 2-3;
+
+////Math methods
+Math.floor();//it will round up the decimal number 3.25 => 3
+Math.ceil();//it will round up the decimal number 3.25 => 4
+Math.random();//it will give you number between 0 & 1 in decimal
+Math.random()*5;//it will give you number between 0 & 5 in decimal
+Math.floor(Mathi.random()*4);//it will give you number between 0 & 4 in integer
+
+////equal signs (conditional operator)
+// == (double equal) -> checks for equality
+x == 8;//false
+x == 5;//true
+x == '5';//true
+
+// === (triplet equal) -> checks for equality and data type
+x === 5;//true
+x === '5';//false - because data type mismatch
+
+
+
+
+
 console.log('Hey there! I am Omkar'); //consle.log is used for logging any enent or test in consol window
 alert('Hey there!');//alert is used for showing alter pop up
 

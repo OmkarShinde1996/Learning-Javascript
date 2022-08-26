@@ -147,19 +147,26 @@ function buttonRandom(){
     }
 }
 
+
+
 //Challenge 5 : Blackjack
 let blackjackGame = {
     'you' : {'scoreSpan':'#your-blackjack-score','div':'#your-box','score':0},
     'dealer' : {'scoreSpan':'#dealer-blackjack-score','div':'#dealer-box','score':0},
     'cards' : ['2','3','4','5','6','7','8','9','10','K','J','Q','A'],
+    'cardValue' : {'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'K':10,'J':10,'Q':10,'A':[1,11]},
+    'wins' : 0,
+    'losses' : 0,
+    'draws' : 0,
 }
 const YOU = blackjackGame['you'];
 const DEALER = blackjackGame['dealer'];
 const HITSOUND = new Audio('./assets/sounds/swish.m4a'); //Adding sound
-const YOULOSESOUND = new Audio('./assets/sounds/aww.mp3');
-const YOUWINSOUND = new Audio('./assets/sounds/cash.mp3');
+const LOSTSOUND = new Audio('./assets/sounds/aww.mp3');
+const WINSOUND = new Audio('./assets/sounds/cash.mp3');
 
 document.querySelector('#blackjack-hit-button').addEventListener('click',blackjackHit);
+document.querySelector('#blackjack-stand-button').addEventListener('click',blackjackStand);
 document.querySelector('#blackjack-deal-button').addEventListener('click',blackjackDeal);
 
 function randomCard(){
@@ -169,19 +176,33 @@ function randomCard(){
 
 function blackjackHit(){
     let card = randomCard();
-    console.log(card);
+    console.log(card); //Printing in console which card is shown
     showCards(card,YOU);
+    updateScore(card,YOU); 
+    showScore(YOU);
+    console.log(YOU['score']); //Printing in console what is the player score
 }
 
 function blackjackStand(){
-    showCards(DEALER);
+    let card = randomCard();
+    showCards(card,DEALER);
+    updateScore(card,DEALER); 
+    showScore(DEALER);
+
+    if(DEALER['score'] > 15){
+        let winner = decideWinner();
+        showResult(winner);
+    }
 }
 
 function showCards(card,activePalyer){
-    let cardImage = document.createElement('img');
-    cardImage.src = `./assets/images/${card}.jpg`;//it is called string templating
-    document.querySelector(activePalyer['div']).appendChild(cardImage);
-    HITSOUND.play();//Playing sound whenever Hit button gets clicked
+    if(activePalyer['score'] <= 21){
+        let cardImage = document.createElement('img');
+        cardImage.src = `./assets/images/${card}.jpg`;//it is called string templating
+        document.querySelector(activePalyer['div']).appendChild(cardImage);
+        HITSOUND.play();//Playing sound whenever Hit button gets clicked
+    }
+    
 }
 
 function blackjackDeal(){
@@ -193,4 +214,82 @@ function blackjackDeal(){
     for(let i=0;i<dealerImages.length;i++){
         dealerImages[i].remove();
     }
+    YOU['score'] = 0;
+    DEALER['score'] = 0;
+    document.querySelector('#your-blackjack-score').textContent = 0; //Setting player score back to 0
+    document.querySelector('#your-blackjack-score').style.color = 'white'; //Setting player score color back to white
+    document.querySelector('#dealer-blackjack-score').textContent = 0; //Setting dealer score back to 0
+    document.querySelector('#dealer-blackjack-score').style.color = 'white'; //Setting dealer score color back to white
+    document.querySelector('#blackjack-result').textContent = "Let's play";
+    document.querySelector('#blackjack-result').style.color = 'black';
+    
+}
+
+function updateScore(card,activePalyer){
+    if(card === 'A'){
+        //If adding 11 keeps me below 21, add 11. Otherwise add 1
+        if(activePalyer['score'] + blackjackGame['cardValue'][card][1] <= 21){
+            activePalyer['score'] += blackjackGame['cardValue'][card][1]; //Will add 11
+        }else{
+            activePalyer['score'] += blackjackGame['cardValue'][card][0]; //Will add 1
+        }
+    }else{
+        activePalyer['score'] += blackjackGame['cardValue'][card];
+    }
+}
+
+function showScore(activePalyer){
+    if(activePalyer['score'] >= 21){
+        document.querySelector(activePalyer['scoreSpan']).textContent = 'BUST!';
+        document.querySelector(activePalyer['scoreSpan']).style.color = 'red';
+    }else{
+        document.querySelector(activePalyer['scoreSpan']).textContent =activePalyer['score'];
+    }
+}
+
+//decide winner and return who just won
+//update the wins, loses and draws in table
+function decideWinner(){
+    let winner;
+    if(YOU['score'] <= 21){
+        //condition : higher score than dealer or when dealer busts but you're 21 or under
+        if(YOU['score'] > DEALER['score'] || DEALER['score'] > 21){
+            blackjackGame['wins']++;
+            winner=YOU;
+        }else if (YOU['score'] < DEALER['score']){
+            blackjackGame['losses']++;
+            winner=DEALER;
+        }else if (YOU['score'] === DEALER['score']){
+            blackjackGame['draws']++;
+        }
+        //condition : When you busts but dealer doesn't
+    }else if(YOU['score'] > 21 && DEALER['score'] <= 21){
+        blackjackGame['losses']++;
+        winner=DEALER;
+        //condition : when you and sealer both busts
+    }else if (YOU['score'] > 21 && DEALER['score'] > 21){
+        blackjackGame['draws']++;
+    }
+return winner;
+}
+
+function showResult(winner){
+    let message, messageColor;
+    if(winner === YOU){
+        document.querySelector('#blackjack-wins-result').textContent = blackjackGame['wins'];
+        message = 'You won!';
+        messageColor = 'green';
+        WINSOUND.play();
+    }else if (winner === DEALER){
+        document.querySelector('#blackjack-loses-result').textContent = blackjackGame['losses'];
+        message = 'You lost!';
+        messageColor = 'red';
+        LOSTSOUND.play();
+    }else{
+        document.querySelector('#blackjack-draws-result').textContent = blackjackGame['draws'];
+        message = 'You drew!';
+        messageColor = 'black';
+    }
+    document.querySelector('#blackjack-result').textContent = message;
+    document.querySelector('#blackjack-result').style.color = messageColor;
 }

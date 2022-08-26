@@ -146,3 +146,51 @@ function buttonRandom(){
         all_buttons[i].classList.add(choices[randomNumber]);
     }
 }
+
+//Challenge 5 : Blackjack
+let blackjackGame = {
+    'you' : {'scoreSpan':'#your-blackjack-score','div':'#your-box','score':0},
+    'dealer' : {'scoreSpan':'#dealer-blackjack-score','div':'#dealer-box','score':0},
+    'cards' : ['2','3','4','5','6','7','8','9','10','K','J','Q','A'],
+}
+const YOU = blackjackGame['you'];
+const DEALER = blackjackGame['dealer'];
+const HITSOUND = new Audio('./assets/sounds/swish.m4a'); //Adding sound
+const YOULOSESOUND = new Audio('./assets/sounds/aww.mp3');
+const YOUWINSOUND = new Audio('./assets/sounds/cash.mp3');
+
+document.querySelector('#blackjack-hit-button').addEventListener('click',blackjackHit);
+document.querySelector('#blackjack-deal-button').addEventListener('click',blackjackDeal);
+
+function randomCard(){
+    let randomIndex = Math.floor(Math.random() * 13);
+    return blackjackGame['cards'][randomIndex];
+}
+
+function blackjackHit(){
+    let card = randomCard();
+    console.log(card);
+    showCards(card,YOU);
+}
+
+function blackjackStand(){
+    showCards(DEALER);
+}
+
+function showCards(card,activePalyer){
+    let cardImage = document.createElement('img');
+    cardImage.src = `./assets/images/${card}.jpg`;//it is called string templating
+    document.querySelector(activePalyer['div']).appendChild(cardImage);
+    HITSOUND.play();//Playing sound whenever Hit button gets clicked
+}
+
+function blackjackDeal(){
+    let yourImages = document.querySelector('#your-box').querySelectorAll('img');//Storing all the card images present on the screen in array
+    let dealerImages = document.querySelector('#dealer-box').querySelectorAll('img');//Storing all the card images present on the screen in array
+    for(let i=0;i<yourImages.length;i++){
+        yourImages[i].remove();
+    }
+    for(let i=0;i<dealerImages.length;i++){
+        dealerImages[i].remove();
+    }
+}

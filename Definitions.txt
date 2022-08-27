@@ -96,6 +96,8 @@ filter() : filter() is the higher order function. it is the easiest way to loop 
 
 reduce() : reduce() takes in an argument as a function. reduce() loop through an array and gives you an accumulator
 
+API : API stands for Application Programming Interface and it let's your app communicate with other services to fetch the data.
+
 
 
 

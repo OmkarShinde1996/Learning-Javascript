@@ -90,7 +90,11 @@ for(let i of fruits){
     console.log(i);
 }
 
+map() : map() is the higher order function. it is the easiest way to loop through an array and returns an array (syntax : [1,2,3,4].map(number => console.log(number)))
 
+filter() : filter() is the higher order function. it is the easiest way to loop through an array and returns the filtered array with matching conditions (syntax : [1,2,3,4].filter(number => number > 2)
+
+reduce() : reduce() takes in an argument as a function. reduce() loop through an array and gives you an accumulator
 
 
 

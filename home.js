@@ -18,17 +18,17 @@ Math.floor();//it will round up the decimal number 3.25 => 3
 Math.ceil();//it will round up the decimal number 3.25 => 4
 Math.random();//it will give you number between 0 & 1 in decimal
 Math.random()*5;//it will give you number between 0 & 5 in decimal
-Math.floor(Mathi.random()*4);//it will give you number between 0 & 4 in integer
+Math.floor(Math.random()*4);//it will give you number between 0 & 4 in integer
 
 ////equal signs (conditional operator)
 // == (double equal) -> checks for equality
-x == 8;//false
-x == 5;//true
-x == '5';//true
+// x == 8;//false
+// x == 5;//true
+// x == '5';//true
 
-// === (triplet equal) -> checks for equality and data type
-x === 5;//true
-x === '5';//false - because data type mismatch
+// // === (triplet equal) -> checks for equality and data type
+// x === 5;//true
+// x === '5';//false - because data type mismatch
 
 ////String interpolation
 let bob = 'omkar';

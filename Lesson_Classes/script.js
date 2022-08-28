@@ -29,3 +29,24 @@ const arr = [1,2,3,4,5,6];
 arr.myPush(7);
 arr.myPush(8);
 console.log(arr);
+
+//EventListners
+const click = document.getElementById('click');
+//Below is the example of event listner it takes 2 arguments 1st is event and 2nd is function
+click.addEventListener('click',() => console.log('hey hey'))
+
+//You can also add event listner to entire DOM like below
+document.addEventListener('keydown', () => console.log('key pressed on keyboard'))
+
+//another example
+document.addEventListener('keydown', (e) => {
+    if(e.key == "w"){
+        console.log('You pressed Q');
+    }else if(e.key == "a"){
+        console.log('You pressed A');
+    }else if(e.key == "s"){
+        console.log('You pressed S');
+    }else if(e.key == "d"){
+        console.log('You pressed D');
+    }
+})

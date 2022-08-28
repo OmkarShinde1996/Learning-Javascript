@@ -170,3 +170,26 @@ console.log(sum(1,2).then(value => console.log(value)));
 
 ================================================================================================================================================
 
+.addEventListner() : It is a method which we can attach to any dom element so that our code will run accounrding to the everything
+
+Event listner it takes 2 arguments 1st is event and 2nd is function. Below are the 2 examples of it
+===========================
+//Example 1
+const click = document.getElementById('click');
+click.addEventListener('click',() => console.log('hey hey'))
+
+//Example 2
+document.addEventListener('keydown', () => console.log('key pressed on keyboard'))
+
+//Example 3
+document.addEventListener('keydown', (e) => {
+    if(e.key == "w"){
+        console.log('You pressed Q');
+    }else if(e.key == "a"){
+        console.log('You pressed A');
+    }else if(e.key == "s"){
+        console.log('You pressed S');
+    }else if(e.key == "d"){
+        console.log('You pressed D');
+    }
+})

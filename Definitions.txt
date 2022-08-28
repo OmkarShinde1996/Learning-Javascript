@@ -65,6 +65,14 @@ removing the element at 1st position in array => array.
 
 Getting lenght of array => array.length; 
 
+push() : this method adds the given element at the end of the array
+
+pop() : this method removes 1st element from the array
+
+shift() : this method removes 1st element from the array
+
+unshift(element) : this method adds the given element at the start of the array
+
 slice(); : The slice method return the position of the array you want in a new array (array.slice(0,2);)
 
 indexOf('element'); : This method will give you the index of perticular element in array
@@ -159,3 +167,6 @@ console.log(sum(1,2));
 2. You ".then(value => console.log(value));" the function like below example
 const sum = async (a,b) => a+b
 console.log(sum(1,2).then(value => console.log(value)));
+
+================================================================================================================================================
+

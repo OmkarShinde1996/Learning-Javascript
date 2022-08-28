@@ -98,7 +98,64 @@ reduce() : reduce() takes in an argument as a function. reduce() loop through an
 
 API : API stands for Application Programming Interface and it let's your app communicate with other services to fetch the data.
 
+================================================================================================================================================
+Promises in JS : Promises are used to handle asynchronous operations in JavaScript. They are easy to manage when dealing with multiple asynchronous operations where callbacks can create callback hell leading to unmanageable code. 
 
+Benefits of Promises 
+========================
+Improves Code Readability
+Better handling of asynchronous operations
+Better flow of control definition in asynchronous logic
+Better Error Handling
 
+A Promise has four states: 
+========================
+fulfilled: Action related to the promise succeeded
+rejected: Action related to the promise failed
+pending: Promise is still pending i.e. not fulfilled or rejected yet
+settled: Promise has fulfilled or rejected
 
+A promise can be created using Promise constructor.
+Syntax :
+let promise = new Promise(function(resolve, reject){
+     //do something
+});
 
+Parameters of promise
+========================
+Promise constructor takes only one argument which is a callback function (and that callback function is also referred as anonymous function too).
+Callback function takes two arguments, resolve and reject
+Perform operations inside the callback function and if everything went well then call resolve.
+If desired operations do not go well then call reject.
+
+You can use .then() and .catch() functions to process accourding to resolve or reject
+
+You can also write promises using asyn/await
+Rules for using async/await
+========================
+1. You must create a function
+2. Always wrap function body into try catch block so you can later print or use error part also
+3. You must use the keyword async
+4. You must use the keyword await
+5. Call the function
+Example :
+const promis1Data = async () => {
+    try{
+        const data = await promise1;
+        console.log(data); //Prints success/resolve message
+    }catch(error){//pass the error/reject message
+        console.log(error);//prints the error/reject message
+    }
+}
+promis1Data();
+
+Ther are only 2 ways to extract the value out of the promise
+1. You await the promise like below example
+const sum = async (a,b) => {
+    const result = await a+b;
+    console.log(result);
+}
+console.log(sum(1,2));
+2. You ".then(value => console.log(value));" the function like below example
+const sum = async (a,b) => a+b
+console.log(sum(1,2).then(value => console.log(value)));
